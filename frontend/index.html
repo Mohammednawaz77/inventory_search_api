@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" data-api-base-url="">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inventory Search Workspace</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Zeerostock Assignment</p>
+          <h1>Search surplus inventory with speed, clarity, and strong filtering.</h1>
+          <p class="hero-text">
+            A focused frontend that consumes a separate backend API and presents results
+            through a clean, responsive search experience.
+          </p>
+          <div class="hero-metrics">
+            <div>
+              <span class="metric-value" id="inventoryCount">12</span>
+              <span class="metric-label">sample items</span>
+            </div>
+            <div>
+              <span class="metric-value" id="categoryCount">6</span>
+              <span class="metric-label">categories</span>
+            </div>
+            <div>
+              <span class="metric-value">2-tier</span>
+              <span class="metric-label">frontend + backend</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-top">
+            <span class="status-dot"></span>
+            <span>Separated Architecture</span>
+          </div>
+          <code>Frontend: http://localhost:3000<br />Backend: http://localhost:3001/search</code>
+          <p>Built to make the API and UI boundaries obvious during evaluation.</p>
+        </div>
+      </header>
+
+      <main class="content-grid">
+        <section class="filters-panel">
+          <div class="panel-heading">
+            <p class="panel-kicker">Search Controls</p>
+            <h2>Refine inventory</h2>
+          </div>
+
+          <form id="filtersForm" class="filters-form" novalidate>
+            <label class="field">
+              <span>Product name</span>
+              <input
+                id="searchInput"
+                name="q"
+                type="text"
+                placeholder="Try “scanner”, “chair”, or “drill”"
+              />
+            </label>
+
+            <label class="field">
+              <span>Category</span>
+              <select id="categorySelect" name="category">
+                <option value="">All categories</option>
+              </select>
+            </label>
+
+            <div class="field-row">
+              <label class="field">
+                <span>Min price</span>
+                <input id="minPriceInput" name="minPrice" type="number" min="0" placeholder="0" />
+              </label>
+
+              <label class="field">
+                <span>Max price</span>
+                <input id="maxPriceInput" name="maxPrice" type="number" min="0" placeholder="5000" />
+              </label>
+            </div>
+
+            <div id="validationMessage" class="validation-message" hidden></div>
+
+            <div class="actions">
+              <button type="submit" class="primary-btn">Search Inventory</button>
+              <button type="button" id="resetButton" class="ghost-btn">Reset</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="results-panel">
+          <div class="results-toolbar">
+            <div>
+              <p class="panel-kicker">Results</p>
+              <h2 id="resultsHeading">All inventory</h2>
+            </div>
+            <div class="results-summary">
+              <span id="resultsCount">12 items</span>
+            </div>
+          </div>
+
+          <div id="activeFilters" class="active-filters"></div>
+          <div id="resultsState" class="results-state" hidden></div>
+
+          <div class="table-shell">
+            <table>
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Category</th>
+                  <th>Supplier</th>
+                  <th>Location</th>
+                  <th>Stock</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody id="resultsBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

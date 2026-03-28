@@ -1,0 +1,10 @@
+{
+  "name": "inventory-search-assignment",
+  "version": "1.0.0",
+  "description": "Inventory Search API + UI assignment",
+  "private": true,
+  "scripts": {
+    "start:backend": "node backend/server.js",
+    "start:frontend": "node frontend/server.js"
+  }
+}
